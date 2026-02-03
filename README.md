@@ -282,11 +282,65 @@ print("Hello world") # fix
 
 - **Why "variable"**: The value can change (it varies). Example: Start with `player_health = 1000`, then set `player_health = 1000 - 100` (900), or `player_health = 800`, then 700 in later lines. Each Example updates what the variable holds.
 
+```py
+player_health = 1000
+print(player_health)
+player_health = player_health - 100
+print(player_health)
+player_health = player_health - 100
+print(player_health)
+player_health = player_health - 100
+print(player_health)
+
+# 1000
+# 900
+# 800
+# 700
+```
+
 ### 2.2. Math with variables
 
 - Use normal math operators: `+`, `-`, `*`, `/`. Example: **armored_health = player_health * armor_multiplier** (e.g. 1000 * 2 = 2000).
 
 - **Negative numbers**: To reduce health (e.g. poison damage), set **poison_damage** to a negative number (e.g. **-10**) so that **player_health + poison_damage** decreases health.
+
+```py
+player_health = 100
+armor_multiplier = 10
+poison_damage = -10 
+player_health = player_health + poison_damage
+armored_health = player_health * armor_multiplier
+
+a = 10
+b = 20
+add = a+b 
+sub = a-b
+mul = a*b
+divide = a/b
+
+print("player_health =", player_health)
+print("armor_multiplier =", armor_multiplier)
+print("poison_damage =", poison_damage)
+print("armored_health =", armored_health)
+
+print("a =", a)
+print("b =", b)
+print("add =", add)
+print("sub =", sub)
+print("mul =", mul)
+print("divide =", divide)
+
+# player_health = 90
+# armor_multiplier = 10
+# poison_damage = -10
+# armored_health = 900
+# a = 10
+# b = 20
+# add = 30
+# sub = -10
+# mul = 200
+# divide = 0.5
+```
 
 ### 2.3. Comments
 
@@ -294,11 +348,53 @@ print("Hello world") # fix
 
 - **Example**: A line that is not valid code causes a syntax error. Turn it into a comment by adding **#** at the start so the computer skips it.
 
+```py
+# Comment
+# will not be executed
+
+# PRINTR("HIE WORDL);l
+
+
+# console output:
+# ➜  kintsugi-stack-python git:(main) ✗ python -u "/Use
+# rs/bali-king/BaliGit/kintsugi-stack-python/tempCodeRu
+# nnerFile.py"
+# ➜  kintsugi-stack-python git:(main) ✗ 
+```
+
 ### 2.4. Naming variables
 
 - **Rules**: You can use letters, numbers, and underscores. A number cannot start the name. No special characters. Python allows this; breaking these rules causes errors.
 
-- **Convention**: Other developers expect readable names. Do not smash words together (e.g. **variablename**). Use **snake_case** in Python (e.g. **variable_name**). **Camel case** (e.g. **variableName**) is used in JavaScript/Go. **Screaming snake case** is often used for constants. Following convention helps others read your code.
+- **Convention**: Other developers expect readable names. Do not smash words together (e.g. **variablename**). 
+  - Use **snake_case** in Python (e.g. **variable_name**). 
+  - **Camel case** (e.g. **variableName**) is used in JavaScript/Go. 
+  - **Screaming snake case** (e.g. **MAX_VALUE**) is often used for constants. Following convention helps others read your code.
+
+```py
+# error variable names: will cause SyntaxError: invalid syntax.
+# @a = 10
+# *name = "hi"
+# $value = 1000
+# 1value = 1000
+# player health = 100
+
+# bad convention variable names
+x = 100
+ph = 90
+variablename = 10
+a1b2 = 5
+
+# good convention variable names (snake_case, readable)
+player_health = 100
+current_health = 90
+armor_multiplier = 10
+poison_damage = -10
+
+# constants (SCREAMING_SNAKE_CASE)
+MAX_HEALTH = 100
+ARMOR_MULTIPLIER = 10
+```
 
 ### 2.5. Data types
 
@@ -310,7 +406,12 @@ print("Hello world") # fix
 
 - **Boolean**: One of two values — **True** or **False** (like 1 or 0). Example: `player_has_magic = True`.
 
-- **Example**: Set **player_health** to an integer (remove quotes) and **player_has_magic** to a Boolean so types match what the code expects.
+```py
+name = "Kintsugi Programmer" # string
+age = 100 # integer
+height = 178.60 # float 
+indian = True # boolean
+```
 
 ### 2.6. F-strings
 
@@ -318,7 +419,25 @@ print("Hello world") # fix
 
 - **Without f-string**: You would concatenate with **+**, e.g. `"My name is " + name + " and I am " + str(height) + " feet tall"`. F-strings are simpler: `f"My name is {name} and I am {height} feet tall"`.
 
-- **Example**: Turn the given string into an f-string and put **name**, **race**, and **height** in the correct places using **{name}**, **{race}**, **{height}**.
+- **Example**: Turn the given string into an f-string and put **name**, **height**, and **height** in the correct places using **{name}**, **{height}**, **{height}**.
+
+```py
+
+name = "Kintsugi Programmer" # string
+age = 100 # integer
+height = 178.60 # float 
+indian = True # boolean
+
+introduction = "My name is " + name + " and I am " + str(height) + "cm tall." 
+print(introduction) 
+
+introduction_2 = f"My name is {name} and I am {height}cm tall." # f-string, simpler & faster
+print(introduction_2) 
+
+
+# My name is Kintsugi Programmer and I am 178.6cm tall.
+# My name is Kintsugi Programmer and I am 178.6cm tall.
+```
 
 ### 2.7. None type
 
@@ -326,9 +445,38 @@ print("Hello world") # fix
 
 - **Example**: Declare **enemy = None**. Then **print(enemy is None)** prints **True**. **print(enemy is not None)** prints **False**.
 
+```py
+enemy = None # no value
+
+print(enemy is None) # True
+print(enemy is not None) # False
+
+enemy = "Voldemort"
+
+print(enemy is None) # False
+print(enemy is not None) # True
+
+# True
+# False
+# False
+# True
+```
+
 ### 2.8. Dynamic vs static typing
 
 - **Python is dynamically typed**: The type of value a variable holds can change. Example: **speed = 5** (integer), then **speed = "five"** (string). In a statically typed language (e.g. Go) you declare the type (e.g. **var speed int**) and cannot assign a string later.
+
+```py
+a = 10
+a = False
+a = None
+a = 10.5
+a = -1345
+a = "a"
+
+# no error in re-assignment
+# python is dynamically typed
+```
 
 - **Best practice**: Do not change variable types in the middle of code; it causes bugs and confusion. Keep each variable's type consistent.
 
@@ -340,11 +488,42 @@ print("Hello world") # fix
 
 - **Example**: Use **sentence_start**, **player_one_health**, **player_two_health**, and **sentence_end** to print "You have 1200 health" and "You have 1100 health" using concatenation. Watch spaces.
 
+```py
+sentence_start = "You have"
+player_one_health = 1200
+string_math = sentence_start + str(player_one_health) + "health"
+
+print(string_math)
+
+print(sentence_start*6)
+
+player_two_health = 1100
+
+print(sentence_start + str(player_one_health) + "health" + "and" + sentence_start + str(player_two_health) + "health")
+
+# You have1200health
+# You haveYou haveYou haveYou haveYou haveYou have
+# You have1200healthandYou have1100health
+```
+
+
 ### 2.10. Multivariable declaration
 
 - You can declare multiple variables on one line: list variables on the left of **=**, values separated by commas on the right. Example: **sword_name, sword_damage, sword_length = "Excalibur", 10, 200**. Same as declaring each on its own line.
 
 - **Clean code**: Code that is easy for people to read. Declaring related variables on one line can make code cleaner when it fits.
+
+```py
+sword_name, sword_damage, sword_length = "Excalibur", 10, 200
+
+print(sword_name)
+print(sword_damage)
+print(sword_length)
+
+# Excalibur
+# 10
+# 200
+```
 
 ---
 
