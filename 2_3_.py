@@ -3,6 +3,10 @@
 
 # PRINTR("HIE WORDL);l
 
+'''
+Multi Line
+Comments
+'''
 
 # console output:
 # ➜  kintsugi-stack-python git:(main) ✗ python -u "/Use

@@ -34,3 +34,6 @@ print("divide =", divide)
 # mul = 200
 # divide = 0.5
 
+# pemdas
+x = 7 + (6*5**2+3)
+print(x) # 160

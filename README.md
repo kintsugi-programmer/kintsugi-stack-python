@@ -304,6 +304,9 @@ print(player_health)
 
 - **Negative numbers**: To reduce health (e.g. poison damage), set **poison_damage** to a negative number (e.g. **-10**) so that **player_health + poison_damage** decreases health.
 
+- Order of Operations: Parentheses can be used to order math operations
+  - https://www.mathsisfun.com/operation-order-pemdas.html
+
 ```py
 player_health = 100
 armor_multiplier = 10
@@ -340,6 +343,10 @@ print("divide =", divide)
 # sub = -10
 # mul = 200
 # divide = 0.5
+
+# pemdas
+x = 7 + (6*5**2+3)
+print(x) # 160
 ```
 
 ### 2.3. Comments
@@ -348,29 +355,43 @@ print("divide =", divide)
 
 - **Example**: A line that is not valid code causes a syntax error. Turn it into a comment by adding **#** at the start so the computer skips it.
 
+- Multi-Line Comments (Aka docstrings): You can use triple quotes to start and end multi-line comments as well.
+  - https://peps.python.org/pep-0257/
 ```py
 # Comment
 # will not be executed
 
 # PRINTR("HIE WORDL);l
 
+'''
+Multi Line
+Comments
+'''
 
 # console output:
 # ➜  kintsugi-stack-python git:(main) ✗ python -u "/Use
 # rs/bali-king/BaliGit/kintsugi-stack-python/tempCodeRu
 # nnerFile.py"
 # ➜  kintsugi-stack-python git:(main) ✗ 
+
 ```
 
 ### 2.4. Naming variables
 
 - **Rules**: You can use letters, numbers, and underscores. A number cannot start the name. No special characters. Python allows this; breaking these rules causes errors.
 
+- https://peps.python.org/pep-0008/#function-and-variable-names
+
 - **Convention**: Other developers expect readable names. Do not smash words together (e.g. **variablename**). 
   - Use **snake_case** in Python (e.g. **variable_name**). 
   - **Camel case** (e.g. **variableName**) is used in JavaScript/Go. 
   - **Screaming snake case** (e.g. **MAX_VALUE**) is often used for constants. Following convention helps others read your code.
-
+```
+• Snake Case   → num_new_users   (Python, Ruby, Rust)
+• Camel Case   → numNewUsers    (JavaScript, Java)
+• Pascal Case  → NumNewUsers    (C#, C++)
+• No Casing    → numnewusers    (just don't do this)
+```
 ```py
 # error variable names: will cause SyntaxError: invalid syntax.
 # @a = 10
@@ -399,6 +420,7 @@ ARMOR_MULTIPLIER = 10
 ### 2.5. Data types
 
 - **String**: Text (a "string" of characters). Use quotes. Example: `"hello"`.
+  - We create strings by wrapping the text in single quotes or double quotes. That said, double quotes are preferred.
 
 - **Integer**: Whole numbers (positive or negative), e.g. **5**, **-5**.
 
@@ -407,7 +429,8 @@ ARMOR_MULTIPLIER = 10
 - **Boolean**: One of two values — **True** or **False** (like 1 or 0). Example: `player_has_magic = True`.
 
 ```py
-name = "Kintsugi Programmer" # string
+name = 'Kintsugi Programmer' # string (not preferred)
+name = "Kintsugi Programmer" # string (preferred)
 age = 100 # integer
 height = 178.60 # float 
 indian = True # boolean
@@ -418,6 +441,9 @@ indian = True # boolean
 - **F-string**: A formatted string. Put **f** before the opening quote; inside the string use **squiggly brackets {}** to embed variables. Python replaces them with their values.
 
 - **Without f-string**: You would concatenate with **+**, e.g. `"My name is " + name + " and I am " + str(height) + " feet tall"`. F-strings are simpler: `f"My name is {name} and I am {height} feet tall"`.
+
+- https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals
+- Interpolate: https://en.wikipedia.org/wiki/String_interpolation
 
 - **Example**: Turn the given string into an f-string and put **name**, **height**, and **height** in the correct places using **{name}**, **{height}**, **{height}**.
 
@@ -441,7 +467,24 @@ print(introduction_2)
 
 ### 2.7. None type
 
-- **None**: Represents "no value." Useful for variables you set early and may or may not set later; you can check whether they are still **None**.
+- **None**: Represents "no value." Useful for variables you set early/default value and may or may not change later; you can check whether they are still **None**.
+
+- Remember, it's crucial to recognize that None is not the same as the string "None". They look the same when printed to the console, but they are different data types. If you use "None" instead of None, you will end up with code that looks correct when it's printed but fails the tests. In that case, printing the type would distinguish between the two values.
+
+- https://docs.python.org/3/library/constants.html#None
+
+- https://docs.python.org/3/library/types.html#types.NoneType
+
+```py
+str_none = "None"
+actual_none = None
+
+print(str_none) # None
+print(actual_none) # None
+
+print(type(str_none)) # <class 'str'>
+print(type(actual_none)) # <class 'NoneType'>
+```
 
 - **Example**: Declare **enemy = None**. Then **print(enemy is None)** prints **True**. **print(enemy is not None)** prints **False**.
 
@@ -460,11 +503,16 @@ print(enemy is not None) # True
 # False
 # False
 # True
+
 ```
 
 ### 2.8. Dynamic vs static typing
 
+- Python is dynamically typed, which means a variable can store any type, and that type can change. there is no limit of re-declaration.
+
 - **Python is dynamically typed**: The type of value a variable holds can change. Example: **speed = 5** (integer), then **speed = "five"** (string). In a statically typed language (e.g. Go) you declare the type (e.g. **var speed int**) and cannot assign a string later.
+
+- https://en.wikipedia.org/wiki/Type_system#Static_and_dynamic_type_checking_in_practice
 
 ```py
 a = 10
